@@ -1,0 +1,65 @@
+{%- macro icon(name) -%}
+{% autoescape false %}
+{% filter replace('<svg ', '<svg aria-hidden="true" ') %}
+    {% include "resources/" + name + ".svg" %}
+{% endfilter %}
+{% endautoescape %}
+{%- endmacro -%}
+{%- macro email(email) -%}
+    <span class="text-nowrap">{{ email.split("@")[0] }}<span
+            class="visually-hidden">noreply@test</span>&#64;{{ email.split("@")[1] }}</span>
+{%- endmacro -%}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="autofix.ci automatically fixes pull requests to increase developer productivity">
+    <meta property="og:title" content="autofix.ci automatically fixes pull requests to increase developer productivity">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://autofix.ci/">
+    <meta property="og:image" content="https://autofix.ci/logo/logo.png">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/logo/logo.svg" type="image/svg+xml"/>
+    {% autoescape false %}{% filter replace("\n","") | replace("    ","") | replace("<s","\n    <s") %}
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "name": "autofix.ci",
+                "applicationCategory": "DeveloperApplication",
+                "thumbnailUrl": "https://autofix.ci/logo/logo.svg",
+                "image": "https://autofix.ci/logo/logo-brand.svg",
+                "url": "https://autofix.ci/"
+            }
+        </script>
+    {% endfilter %}{% endautoescape %}
+    {% block head %}{% endblock %}
+</head>
+<body class="my-4">
+<style>{% include 'resources/bootstrap.min.css' %}</style>
+<header class="container text-center">
+    <div class="m-4 p-4"></div>
+    <div class="alert alert-warning fs-4 mb-4">
+        We haven't launched yet and important parts such as the setup guide are missing.<br>
+        Please do not share this page yet. :)
+    </div>
+    <div class="m-4 p-4"></div>
+    <a href="/">
+        <img class="col-8 col-lg-5" alt="autofix.ci logo"
+             src="data:image/svg+xml,{% filter urlencode %}{% include "logo/logo-brand.svg" %}{% endfilter %}">
+    </a>
+</header>
+{% block body %}
+{% endblock %}
+<footer class="text-center">
+    <hr>
+    <span class="m-1">© 2022 autofix.ci</span>
+    &mdash;
+    <a class="link-secondary m-1" href="https://mailhide.io/e/2gxnSQJt" target="_blank">Contact</a>
+    <a class="link-secondary m-1" href="/security">Security</a>
+    <a class="link-secondary m-1" href="/privacy">Privacy Policy</a>
+    <a class="link-secondary m-1" href="https://github.com/autofix-ci/action/issues">Issues</a>
+</footer>
+</body>
+</html>

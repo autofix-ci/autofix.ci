@@ -1,0 +1,202 @@
+{% extends "frame.html.jinja2" %}
+{% block head %}
+    <title>autofix.ci</title>
+{% endblock %}
+{% block body %}
+<style>/* pygments */{{ pygments_css }}</style>
+<style>
+    .card-header {
+        height: 190px;
+        display: flex;
+        align-items: center;
+    }
+
+    .card-header pre {
+        margin: 0;
+    }
+
+    #action-hash {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 5rem;
+        color: #aaa;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    #arrow {
+        height: 34px;
+        background-image: url("data:image/svg+xml,{% filter urlencode %}{% include "resources/arrow.svg" %}{% endfilter %}");
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+
+    #install-button {
+        color: #fff;
+        background-color: #5B9821;
+        border-color: #5B9821;
+    }
+
+    #install-button:hover {
+        color: #fff;
+        background-color: #477917;
+        border-color: #477917;
+    }
+</style>
+<main class="container my-4 py-4 text-center">
+    <h1 class="fs-4 fw-normal text-center">
+        <dfn class="fw-bold fst-normal">autofix.ci</dfn> automatically fixes pull requests to increase developer
+        productivity.
+    </h1>
+    <div class="row justify-content-center">
+        <p class="col col-lg-10 col-xl-8 text-center fs-5">
+            Pull Requests are often blocked on relatively trivial issues such as code formatting or leftover imports.
+            Fixing these details is expensive as it requires additional roundtrips and context switching.
+            <strong>autofix.ci</strong> automatically fixes such problems, unblocking development flow.
+        </p>
+    </div>
+
+    <a id="install-button" target="_blank" href="https://github.com/apps/autofix-ci/installations/new"
+       class="my-2 my-lg-3 shadow btn btn-lg d-inline-flex align-items-center">
+        {{ icon("github") }}
+        &nbsp;
+        Install on GitHub
+    </a>
+
+    <h2 class="mt-4">How it Works</h2>
+    <div id="arrow" class="d-none d-lg-block"></div>
+    <div class="row justify-content-center align-items-center">
+        <div class="col-12 col-lg-6 mb-2">
+            <div class="card">
+                {% set foo -%}
+                <span id="action-hash">40f4f7bccdde208056784fa907921be767412c5f</span>
+                {%- endset %}
+                <div class="card-body text-center">
+                    <h3 class="card-title fs-5">1. Define a GitHub Actions workflow.</h3>
+                    <p class="card-text">Run the same tools you use locally, then call <strong>autofix.ci</strong>.</p>
+                </div>
+                <div class="card-header p-4 text-start justify-content-center">
+                    <div class="col-12 col-xl-9" style="font-size: 1.1rem">
+                        {{ job_html | replace('hash', foo) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-6">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h3 class="card-title fs-5">2. Receive automatic fixes.</h3>
+                    <p class="card-text"><strong>autofix.ci</strong> will securely update pull requests if necessary.
+                    </p>
+                </div>
+                <div class="card-header p-3 p-xl-4" style="justify-content: center">
+                    <img alt="a screenshot showing automated commits on GitHub" class="img-fluid"
+                         style="max-width: 100%; justify-self: center; max-height: 160px"
+                         src="data:image/png;base64,{% include "resources/github-screenshot.b64.png" %}">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a target="_blank" href="/setup" class="my-3 shadow btn btn-warning btn-lg d-inline-flex align-items-center">
+        {{ icon("book-half") }}
+        &nbsp;
+        See Example Actions
+    </a>
+
+    <h2 class="mt-4">Features</h2>
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-8 text-start fs-5">
+            <ul>
+                <li>Works with your existing linters, formatters, code fixers, or pre-commit hooks.</li>
+                <li>No configuration: Simply call the <strong>autofix.ci</strong> action when you want to update the
+                    pull request.
+                </li>
+                <li>Supports <em>all</em> pull requests (including from external contributors).</li>
+                <!--<li>Built with security in mind (<a href="/security">details</a>).</li>-->
+            </ul>
+        </div>
+    </div>
+
+    <h2 class="mt-4">Pricing</h2>
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-8 text-start fs-5">
+            <ul>
+                <li><strong>Free for open source projects.</strong>.</li>
+                <li>For private and organization repositories, see <a href="https://github.com/apps/autofix-ci/">GitHub
+                    Marketplace</a>.
+                </li>
+                <li>For enterprise solutions, contact {{ email("enterprise@autofix.ci") }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2 class="mt-4">FAQ</h2>
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-8 text-start fs-5">
+
+            <strong>Which platforms are supported?</strong>
+            <ul>
+                <li>
+                    <strong>autofix.ci</strong> currently supports GitHub and GitHub Actions only.
+                </li>
+            </ul>
+
+            <strong>Does it work for all commits?</strong>
+            <ul>
+                <li>
+                    For safety reasons, <strong>autofix.ci</strong> will not push for commits made by bots. This avoids
+                    infinite loops with bots continuously correcting each other.
+                </li>
+            </ul>
+
+            <strong>What happens under the hood?</strong>
+            <ul>
+                <li>
+                    When you invoke the <strong>autofix.ci</strong> action, it will <code>git diff</code> the current
+                    repository, create an <code>autofix.json</code> file containing all changes, upload this file
+                    as a GitHub Actions artifact, and notify the <strong>autofix.ci</strong> server.
+                </li>
+                <li>
+                    The <strong>autofix.ci</strong> server fetches <code>autofix.json</code> from GitHub, validates
+                    its contents, and pushes a new commit to the pull request branch using its GitHub App credentials.
+                </li>
+            </ul>
+
+            <strong>Is it secure?</strong>
+            <ul>
+                <li>
+                    Yes, because we keep the necessary GitHub authentication token away from potentially untrusted
+                    actions.
+                    Please see <a href="https://autofix.ci/security">autofix.ci/security</a> for details.
+                </li>
+            </ul>
+
+            <strong>Who is behind autofix.ci?</strong>
+            <ul>
+                <li>
+                    <strong>autofix.ci</strong> is developed by <a href="https://github.com/mhils">Max Hils</a>.
+                    Max is involved in several high-profile open-source projects and holds a PhD in computer science
+                    with a
+                    specialization on security and privacy. You can follow him on
+                    <a href="https://twitter.com/maximilianhils">Twitter</a> to see
+                    if he's trustworthy.
+                </li>
+            </ul>
+
+            <p class="mt-4"><small>
+                If your question is not answered here, please open a GitHub issue or reach out to
+                {{ email("support@autofix.ci") }}.
+            </small></p>
+        </div>
+    </div>
+
+</main>
+<script>
+    (async () => {
+        const resp = await fetch("https://api.github.com/repos/autofix-ci/action/branches/main");
+        const data = await resp.json();
+        document.getElementById("action-hash").textContent = data.commit.sha;
+    })();
+</script>
+{% endblock %}

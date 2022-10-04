@@ -1,0 +1,27 @@
+{% extends "frame.html.jinja2" %}
+{% block head %}
+    <title>autofix.ci: privacy policy</title>
+{% endblock %}
+{% block body %}
+    <main class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-6">
+                <h1>Privacy Policy</h1>
+
+                <h2 class="mt-4">Collection of Personal Information</h2>
+                <p>We do not collect, transmit, distribute, or sell your personal data.</p>
+
+                <h2 class="mt-4">Tracking and Cookies</h2>
+                <p>This website neither embeds any third parties nor uses cookies.</p>
+
+                <h2 class="mt-4">Contact</h2>
+                <p>
+                    If you have any additional questions regarding this privacy policy,
+                    please reach out to us at {{ email("privacy@autofix.ci") }}.
+                </p>
+            </div>
+        </div>
+
+
+    </main>
+{% endblock %}
