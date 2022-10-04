@@ -13,6 +13,11 @@ on:
 permissions:
   contents: read
 
+# Allow one concurrent deployment
+concurrency:
+  group: "website"
+  cancel-in-progress: true
+
 jobs:
   # Build the documentation and upload the static HTML files as an artifact.
   build:
@@ -25,7 +30,7 @@ jobs:
       - run: python make.py
       - uses: actions/upload-pages-artifact@v1
         with:
-          path: docs/
+          path: '.'
 
   # Deploy the artifact to GitHub pages.
   # This is a separate job so that only actions/deploy-pages has the necessary permissions.
