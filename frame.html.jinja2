@@ -38,12 +38,25 @@
 </head>
 <body class="my-4">
 <style>{% include 'resources/bootstrap.min.css' %}</style>
-<header class="container text-center">
-    <div class="m-4 p-4"></div>
+<style>
+    .card-header pre {
+        margin: 0;
+    }
+
+    .action-hash {
+        text-overflow: ellipsis;
+        display: inline-block;
+        vertical-align: middle;
+        overflow: hidden;
+        color: #aaa;
+    }
+</style>
+<header class="container text-center pb-4 mb-4">
+    <!--<div class="m-4 p-4"></div>
     <div class="alert alert-warning fs-4 mb-4">
         We haven't launched yet. Please do not share this page yet. :)
     </div>
-    <div class="m-4 p-4"></div>
+    <div class="m-4 p-4"></div>-->
     <a href="/">
         <img class="col-8 col-lg-5" alt="autofix.ci logo"
              src="data:image/svg+xml,{% filter urlencode %}{% include "logo/logo-brand.svg" %}{% endfilter %}">
@@ -51,7 +64,7 @@
 </header>
 {% block body %}
 {% endblock %}
-<footer class="text-center">
+<footer class="text-center mt-4 pt-4">
     <hr>
     <span class="m-1">© 2022 autofix.ci</span>
     &mdash;
@@ -60,5 +73,17 @@
     <a class="link-secondary m-1" href="/privacy">Privacy Policy</a>
     <a class="link-secondary m-1" href="https://github.com/autofix-ci/action/issues">Issues</a>
 </footer>
+<script>
+    (async () => {
+        let elems = document.getElementsByClassName("action-hash");
+        if (elems.length > 0) {
+            const resp = await fetch("https://api.github.com/repos/autofix-ci/action/branches/main");
+            const data = await resp.json();
+            for (let e of elems) {
+                e.textContent = data.commit.sha;
+            }
+        }
+    })();
+</script>
 </body>
 </html>

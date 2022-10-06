@@ -2,14 +2,76 @@
 {% block head %}
     <title>autofix.ci: setup</title>
 {% endblock %}
+{% macro examplebox(filename) %}
+    <div class="card mb-3">
+        <div class="card-header p-3">
+            {{ example(filename) }}
+        </div>
+    </div>
+{% endmacro %}
 {% block body %}
-    <main class="container mt-4">
+    <style>/* pygments */{{ pygments_css }}</style>
+    <style>
+        .card-header pre {
+            margin: 0;
+        }
+    </style>
+    <main class="container">
         <div class="row justify-content-center">
-            <div class="col-12 col-lg-6">
-                <h1>Setup</h1>
+            <div class="col-12 col-lg-8">
+                <div id="install-success" class="d-none alert alert-success d-none" role="alert">
+                    <div class="text-center fs-5 mb-2">
+                        Thank you for installing the <strong>autofix.ci</strong> app!
+                    </div>
+                    <div class="text-center">
+                        To finish your setup, follow the steps below.
+                    </div>
+                </div>
 
-                TODO
+                <h1 class="mb-4">Getting Started</h1>
+
+                <p>To setup autofix.ci, do the following:</p>
+
+                <ol class="fs-5">
+                    <li id="install-step">
+                        <h2 class="fs-5">
+                            Install our <a href="https://github.com/apps/autofix-ci/installations/new" target="_blank">GitHub
+                            App</a>.</h2>
+                        <p class="fs-6">
+                            This provides autofix.ci with the necessary permissions to update pull requests.
+                        </p>
+                    </li>
+                    <li>
+                        <h2 class="fs-5">
+                            Create <samp>.github/workflows/autofix.yml</samp> with the following content:
+                        </h2>
+                        {{ examplebox("resources/stub.yml") }}
+                        <p class="fs-6">
+                            For extra security, we specify
+                            limit the runner's permissions and pin the action to a specific release
+                            (<a href="https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions">see docs</a>).
+                        </p>
+                    </li>
+                    <li>
+                        <h2 class="fs-5">Add a job that auto-fixes your codebase.</h2>
+                        <p class="fs-6">
+                            Replace the comment in the file above with the code-fixing tools of your choice (see below).
+                        </p>
+                    </li>
+                </ol>
+
+                <h2 class="mb-4">Examples</h2>
+                <h3>Python</h3>
+                <h4>black + isort</h4>
+                {{ examplebox("examples/python.yml") }}
             </div>
         </div>
     </main>
+    <script>
+        if (location.search.includes("installation_id")) {
+            document.getElementById("install-success").classList.remove("d-none");
+            document.getElementById("install-step").style.listStyleType = '"✅"';
+            document.getElementById("install-step").querySelector("h5").classList.add("text-success");
+        }
+    </script>
 {% endblock %}

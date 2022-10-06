@@ -3,7 +3,7 @@
     <title>autofix.ci: privacy policy</title>
 {% endblock %}
 {% block body %}
-    <main class="container mt-4">
+    <main class="container">
         <div class="row justify-content-center">
             <div class="col-12 col-lg-6">
                 <h1>Security</h1>
@@ -17,8 +17,8 @@
                 <ol>
                     <li>
                         autofix.ci has a well-defined threat model in which GitHub Actions runners are treated as
-                        completely untrusted and potentially compromised. The autofix.ci API only enables a workflow to
-                        update the current pull request.
+                        completely untrusted and potentially compromised. The autofix.ci API only enables the workflow
+                        to update the current pull request once.
                     </li>
                     <li>
                         autofix.ci's hosted service is written in a memory-safe language that emphasizes correctness
@@ -53,21 +53,19 @@
 
                 <h2 class="mt-4">Bug Bounty</h2>
                 <p>
-                    For the responsible disclosure of critical vulnerabilities that could compromise
-                    the integrity or
-                    confidentiality of our users' GitHub repositories, autofix.ci pays a bug bounty of up to
-                    one month of autofix.ci's total revenue.
+                    For the responsible disclosure of critical vulnerabilities that could compromise the integrity or
+                    confidentiality of our users' GitHub repositories, autofix.ci pays a bug bounty of up to one month
+                    of autofix.ci's total revenue.
                 </p>
                 <p>
                     We will not bind you to any additional terms or have you sign an NDA when you report a
                     vulnerability. However, bounty payments, if any, will be determined by autofix.ci, in autofix.ci's
                     sole discretion. In no event shall autofix.ci be obligated to pay you a bounty for any submission.
                     If you are unhappy with how autofix.ci is handling the disclosure process, you may walk away at any
-                    moment and publish your findings in the public.
+                    moment and publish your findings (but not any sensitive data you may have had access to) in the
+                    public.
                 </p>
             </div>
         </div>
-
-
     </main>
 {% endblock %}
