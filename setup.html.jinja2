@@ -18,7 +18,7 @@
     </style>
     <main class="container">
         <div class="row justify-content-center">
-            <div class="col-12 col-lg-8">
+            <div class="col-12 col-lg-9">
                 <div id="install-success" class="d-none alert alert-success d-none" role="alert">
                     <div class="text-center fs-5 mb-2">
                         Thank you for installing the <strong>autofix.ci</strong> app!
@@ -28,7 +28,7 @@
                     </div>
                 </div>
 
-                <h1 class="mb-4">Getting Started</h1>
+                <h1 id="getting-started" class="mb-4">Getting Started</h1>
 
                 <p>To setup autofix.ci, do the following:</p>
 
@@ -45,25 +45,98 @@
                         <h2 class="fs-5">
                             Create <samp>.github/workflows/autofix.yml</samp> with the following content:
                         </h2>
-                        {{ examplebox("resources/stub.yml") }}
-                        <p class="fs-6">
-                            For extra security, we specify
-                            limit the runner's permissions and pin the action to a specific release
-                            (<a href="https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions">see docs</a>).
-                        </p>
+                        <div class="fs-6">
+                            {{ examplebox("resources/stub.yml") }}
+                            <p>
+                                Limiting the runner's permissions and pinning the autofix action to a specific
+                                release is not required, but makes our workflow more resilient against supply chain
+                                attacks.<sup><a href="https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions">[1]</a></sup>
+                            </p>
+                        </div>
                     </li>
                     <li>
                         <h2 class="fs-5">Add a job that auto-fixes your codebase.</h2>
                         <p class="fs-6">
-                            Replace the comment in the file above with the code-fixing tools of your choice (see below).
+                            Replace the comment in the file above with the code-fixing tools of your choice.<br>
+                            Take a look at the examples below!
                         </p>
                     </li>
                 </ol>
 
-                <h2 class="mb-4">Examples</h2>
-                <h3>Python</h3>
-                <h4>black + isort</h4>
+                <h1 id="examples" class="my-4 pt-4">Examples</h1>
+
+                <p>
+                    You can combine all the example steps below, but keep them in a single job with only
+                    one call to the autofix action! :)
+                </p>
+
+                <h2 id="python">Python</h2>
+                <p>
+                    This example demonstrates the use of some of the most popular Python code fixing tools:
+                </p>
                 {{ examplebox("examples/python.yml") }}
+                <p>
+                    Of course, there's way more in the Python ecosystem! You may also want to check out
+                    <a href="https://github.com/asottile/yesqa">yesqa</a>,
+                    <a href="https://github.com/asottile/blacken-docs">blacken-docs</a>,
+                    <a href="https://github.com/google/yapf">yapf</a>,
+                    <a href="https://github.com/pycqa/isort/">isort</a>,
+                    <a href="https://github.com/hhatto/autopep8">autopep8</a>,
+                    <a href="https://github.com/PyCQA/docformatter">docformatter</a>, or
+                    <a href="https://usort.readthedocs.io/en/stable/">μsort</a>.
+                </p>
+
+                <h2 id="typescript">TypeScript / JavaScript / HTML / CSS</h2>
+                <p>
+                    Here's a simple workflow that formats your TypeScript or JavaScript code using
+                    <a href="https://prettier.io/">Prettier</a>:
+                </p>
+                {{ examplebox("examples/typescript.yml") }}
+                <p>
+                    Alternatively, you may want to check out
+                    <a href="https://standardjs.com/">standardjs</a>!
+                </p>
+
+                <h2 id="rust">Rust</h2>
+                <p>
+                    Here's a simple workflow that <samp>rustfmt</samp>s your repo and applies clippy's suggestions:
+                </p>
+                {{ examplebox("examples/rust.yml") }}
+                <p>
+                    You can of course switch to a different Rust toolchain first,
+                    for example if you are using nightly rustfmt.
+                </p>
+
+                <h2 id="go">Go</h2>
+                <p>
+                    Here's a simple workflow that <samp>gofmt</samp>s your repo:
+                </p>
+                {{ examplebox("examples/go.yml") }}
+
+                <h2 id="images">Images</h2>
+                <p>
+                    With a bit of creativity, <strong>autofix.ci</strong> is not limited to code formatting.
+                    For example, the following workflow shrinks all PNG files:
+                </p>
+                {{ examplebox("examples/web.yml") }}
+
+                <h2 id="pre-commit">pre-commit hooks</h2>
+                <p>
+                    If your workflow is based on pre-commit hooks only,
+                    <a href="https://pre-commit.ci/">pre-commit.ci</a>
+                    offers a strong alternative to autofix.ci. Of course, you can also use pre-commit hooks in your
+                    autofix.ci workflow:
+                </p>
+                {{ examplebox("examples/pre-commit.yml") }}
+
+                <div class="text-center mt-4">
+                    <a href="https://github.com/autofix-ci/autofix.ci/blob/main/setup.html.jinja2"
+                       class="btn btn-sm btn-outline-dark d-inline-flex align-items-center">
+                        {{ icon('github') }}
+                        &nbsp;
+                        Improve this page on GitHub
+                    </a>
+                </div>
             </div>
         </div>
     </main>

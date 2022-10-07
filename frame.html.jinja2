@@ -21,7 +21,7 @@
     <meta property="og:image" content="https://autofix.ci/logo/logo.png">
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" href="/logo/logo.svg" type="image/svg+xml"/>
-    {% autoescape false %}{% filter replace("\n","") | replace("    ","") | replace("<s","\n    <s") %}
+    {%- autoescape false %}{% filter replace("\n","") | replace("    ","") | replace("<s","\n    <s") -%}
         <script type="application/ld+json">
             {
                 "@context": "https://schema.org",
@@ -34,7 +34,7 @@
             }
         </script>
     {% endfilter %}{% endautoescape %}
-    {% block head %}{% endblock %}
+    {%- block head %}{% endblock -%}
 </head>
 <body class="my-4">
 <style>{% include 'resources/bootstrap.min.css' %}</style>
@@ -50,13 +50,34 @@
         overflow: hidden;
         color: #aaa;
     }
+
+    .headerlink {
+        color: var(--bs-secondary);
+        position: absolute;
+        transition: all 100ms ease-in-out;
+        opacity: 0;
+    }
+
+    .headerlink::before {
+        content: "#";
+        line-height: 1.4em;
+        font-size: 0.9em;
+        position: absolute;
+        left: calc(-1.2ex - 5px);
+        width: calc(1.2ex + 5px);
+    }
+
+    *:hover > .headerlink,
+    *:target > .headerlink,
+    .headerlink:hover {
+        opacity: 1;
+    }
+
+    *:target > .headerlink {
+        color: var(--bs-primary);
+    }
 </style>
 <header class="container text-center pb-4 mb-4">
-    <!--<div class="m-4 p-4"></div>
-    <div class="alert alert-warning fs-4 mb-4">
-        We haven't launched yet. Please do not share this page yet. :)
-    </div>
-    <div class="m-4 p-4"></div>-->
     <a href="/">
         <img class="col-8 col-lg-5" alt="autofix.ci logo"
              src="data:image/svg+xml,{% filter urlencode %}{% include "logo/logo-brand.svg" %}{% endfilter %}">
@@ -82,6 +103,19 @@
             for (let e of elems) {
                 e.textContent = data.commit.sha;
             }
+        }
+    })();
+</script>
+<script>
+    (() => {
+        const elems = document.querySelectorAll("h1[id], h2[id], h3[id], h4[id]");
+        for (let e of elems) {
+            let link = document.createElement("a");
+            link.href = `#${e.id}`;
+            link.classList.add("headerlink")
+            e.prepend(
+                link
+            );
         }
     })();
 </script>

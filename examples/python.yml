@@ -1,6 +1,8 @@
 name: autofix.ci
 
-on: [pull_request]
+on: [ pull_request ]
+permissions:
+  contents: read
 
 jobs:
   autofix:
@@ -8,6 +10,22 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      TODO
+      # Format your code with https://github.com/psf/black
+      - run: pip install black
+      - run: black .
+
+      # Remove unused imports with https://github.com/PyCQA/autoflake
+      - run: pip install autoflake
+      - run: autoflake --in-place --remove-all-unused-imports .
+
+      # Sort imports with https://github.com/PyCQA/isort
+      - run: pip install isort
+      - run: isort .
+
+      # Upgrade to the latest Python syntax with https://github.com/asottile/pyupgrade
+      - run: pip install pyupgrade
+      - run: |
+         shopt -s globstar
+         pyupgrade --py310-plus **/*.py
 
       - uses: autofix-ci/action@hash
