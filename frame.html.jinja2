@@ -95,15 +95,20 @@
     <a class="link-secondary m-1" href="https://github.com/autofix-ci/action/issues">Issues</a>
 </footer>
 <script>
-    (async () => {
-        let elems = document.getElementsByClassName("action-hash");
-        if (elems.length > 0) {
-            const resp = await fetch("https://api.github.com/repos/autofix-ci/action/branches/main");
-            const data = await resp.json();
-            for (let e of elems) {
-                e.textContent = data.commit.sha;
-            }
+    (() => {
+        let repos = {};
+        for (let e of document.getElementsByClassName("action-hash")) {
+            repos[e.dataset.repo] = (repos[e.dataset.repo] || []).concat(e);
         }
+        Object.entries(repos).forEach(async ([repo, nodes]) => {
+            const resp = await fetch(`https://api.github.com/repos/${repo}/branches/main`, {cache: "force-cache"});
+            const data = await resp.json();
+            if (data && data.commit && data.commit.sha) {
+                for (let e of nodes) {
+                    e.textContent = data.commit.sha;
+                }
+            }
+        });
     })();
 </script>
 <script>

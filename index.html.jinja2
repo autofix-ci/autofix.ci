@@ -35,21 +35,13 @@
         }
     </style>
     <main class="container text-center">
-        <h1 class="fs-4 fw-normal text-center">
-            <dfn class="fw-bold fst-normal">autofix.ci</dfn> automatically fixes pull requests to increase developer
-            productivity.
+        <h1 class="my-4 fs-4 fw-normal text-center">
+            <dfn class="fw-bold fst-normal">autofix.ci</dfn>
+            automatically fixes pull requests to increase developer productivity.
         </h1>
-        <div class="row justify-content-center">
-            <p class="col col-lg-10 col-xl-8 text-center fs-5">
-                Pull Requests are often blocked on relatively trivial issues such as code formatting or leftover
-                imports.
-                Fixing these details is expensive as it requires additional roundtrips and context switching.
-                <strong>autofix.ci</strong> automatically fixes such problems, unblocking development flow.
-            </p>
-        </div>
 
         <a id="install-button" target="_blank" href="https://github.com/apps/autofix-ci/installations/new"
-           class="my-2 my-lg-3 shadow btn btn-lg d-inline-flex align-items-center">
+           class="my-lg-3 shadow btn btn-lg d-inline-flex align-items-center">
             {{ icon("github") }}
             &nbsp;
             Install on GitHub
@@ -62,7 +54,7 @@
                 <div class="card">
                     <div class="card-body text-center">
                         <h3 class="card-title fs-5">1. Define a GitHub Actions workflow.</h3>
-                        <p class="card-text">Run the same tools you use locally, then call <strong>autofix.ci</strong>.
+                        <p class="card-text">Run your favorite code-fixing tools, then call <strong>autofix.ci</strong>.
                         </p>
                     </div>
                     <div class="card-header p-4 text-start justify-content-center">
@@ -89,7 +81,7 @@
             </div>
         </div>
 
-        <a target="_blank" href="/setup" class="my-3 shadow btn btn-warning btn-lg d-inline-flex align-items-center">
+        <a target="_blank" href="/setup" class="my-4 shadow btn btn-warning btn-lg d-inline-flex align-items-center">
             {{ icon("book-half") }}
             &nbsp;
             See Example Actions
@@ -99,34 +91,52 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10 col-xl-8 text-start fs-5">
                 <ul>
-                    <li>Works with your existing linters, formatters, code fixers, or pre-commit hooks.</li>
+                    <li>Works with your existing linters, formatters, bundlers, compilers, or other code fixers.</li>
                     <li>No configuration: Simply call the <strong>autofix.ci</strong> action when you want to update the
                         pull request.
                     </li>
-                    <li>Supports <em>all</em> pull requests (including from external contributors).</li>
-                    <!--<li>Built with security in mind (<a href="/security">details</a>).</li>-->
+                    <li>Supports <em>all</em> pull requests (including from forks).</li>
                 </ul>
             </div>
         </div>
 
-        <!--
+        {#
         <h2 class="mt-4">Pricing</h2>
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10 col-xl-8 text-start fs-5">
                 <ul>
-                    <li><strong>Free for open source projects.</strong>.</li>
-                    <li>For private and organization repositories, see <a href="https://github.com/apps/autofix-ci/">GitHub
-                        Marketplace</a>.
-                    </li>
-                    <li>For enterprise solutions, contact {{ email("enterprise@autofix.ci") }}</li>
+                    <li><strong>Always free for open source projects.</strong></li>
+                    <li>Free for private and organization repositories while in preview.</li>
+                    <li>For enterprise solutions, contact {{ email("enterprise@autofix.ci") }}.</li>
                 </ul>
             </div>
         </div>
-        -->
+        #}
 
         <h2 class="mt-4">FAQ</h2>
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10 col-xl-8 text-start fs-5">
+
+                <h3 id="why" class="fs-5">Why is this useful?</h3>
+                <ul>
+                    <li>
+                        Pull Requests are often blocked on relatively trivial issues such as code formatting or leftover
+                        imports. Fixing these details is expensive as it requires additional roundtrips and context
+                        switching. <strong>autofix.ci</strong> automatically fixes such problems, unblocking development
+                        flow.
+                    </li>
+                </ul>
+
+                <h3 id="why" class="fs-5">Why do we need the <strong>autofix.ci</strong> app?</h3>
+                <ul>
+                    <li>
+                        For security reasons, pull requests from forked repositories do not have any write permissions
+                        which they could use to update themselves. The <strong>autofix.ci</strong> app provides
+                        pull requests with tightly-locked self-update capabilities. Alternative approaches such as
+                        processing untrusted code in <samp>pull_request_target</samp> or passing around personal access
+                        tokens are highly dangerous to outright insecure.
+                    </li>
+                </ul>
 
                 <h3 id="which-platforms-are-supported" class="fs-5">Which platforms are supported?</h3>
                 <ul>
@@ -173,11 +183,8 @@
                 <ul>
                     <li>
                         <strong>autofix.ci</strong> is developed by <a href="https://github.com/mhils">Max Hils</a>.
-                        Max is involved in several high-profile open-source projects and holds a PhD in computer science
-                        with a
-                        specialization on security and privacy. You can follow him on
-                        <a href="https://twitter.com/maximilianhils">Twitter</a> to see
-                        if he's trustworthy.
+                        Follow him on <a href="https://twitter.com/maximilianhils">Twitter</a> to see if he's
+                        trustworthy.
                     </li>
                 </ul>
 
