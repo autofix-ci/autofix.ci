@@ -96,23 +96,6 @@
 </footer>
 <script>
     (() => {
-        let repos = {};
-        for (let e of document.getElementsByClassName("action-hash")) {
-            repos[e.dataset.repo] = (repos[e.dataset.repo] || []).concat(e);
-        }
-        Object.entries(repos).forEach(async ([repo, nodes]) => {
-            const resp = await fetch(`https://api.github.com/repos/${repo}/branches/main`, {cache: "force-cache"});
-            const data = await resp.json();
-            if (data && data.commit && data.commit.sha) {
-                for (let e of nodes) {
-                    e.textContent = data.commit.sha;
-                }
-            }
-        });
-    })();
-</script>
-<script>
-    (() => {
         const elems = document.querySelectorAll("h1[id], h2[id], h3[id], h4[id]");
         for (let e of elems) {
             let link = document.createElement("a");

@@ -2,6 +2,7 @@
 import re
 from pathlib import Path
 
+import httpx_cache
 import pygments.formatters.html
 import pygments.lexers.python
 from jinja2 import Environment, FileSystemLoader
@@ -20,7 +21,11 @@ if __name__ == "__main__":
         code = pygments.highlight(contents, lexer, formatter)
 
         def hash_sub(m: re.Match) -> str:
-            default = m[2] or "ffd35390d6449f911cccb7694edeeecd7c4d8d87"
+            with httpx_cache.Client(cache=httpx_cache.FileCache()) as client:
+                default = client.get(
+                    f"https://api.github.com/repos/{m[1]}/branches/main",
+                    headers={"cache-control": "max-age=86400"}
+                ).json()["commit"]["sha"]
             return f'{m[1]}@<span class="action-hash" data-repo="{m[1]}">{default}</span>'
 
         code = re.sub(r"([0-9a-zA-Z._/-]+)@hash(?::([0-9a-f]+))?", hash_sub, code)
