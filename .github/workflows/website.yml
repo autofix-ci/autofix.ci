@@ -2,6 +2,7 @@ name: website
 
 # build the documentation whenever there are new commits on main
 on:
+  workflow_dispatch:
   schedule:
     - cron: '20 20 * * 1'
   push:
