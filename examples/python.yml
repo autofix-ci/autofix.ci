@@ -16,7 +16,7 @@ jobs:
 
       # Remove unused imports with https://github.com/PyCQA/autoflake
       - uses: install-pinned/autoflake@hash
-      - run: autoflake --in-place --remove-all-unused-imports .
+      - run: autoflake --in-place --remove-all-unused-imports -r .
 
       # Sort imports with https://github.com/PyCQA/isort
       - uses: install-pinned/isort@hash
