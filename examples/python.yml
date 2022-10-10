@@ -26,6 +26,6 @@ jobs:
       - uses: install-pinned/pyupgrade@hash
       - run: |
          shopt -s globstar
-         pyupgrade --py310-plus **/*.py
+         pyupgrade --exit-zero-even-if-changed --py310-plus **/*.py
 
       - uses: autofix-ci/action@hash

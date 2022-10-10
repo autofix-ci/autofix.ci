@@ -9,7 +9,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      # Format your code with https://github.com/psf/black
       - uses: install-pinned/black@81e6dbf82145462d413a6662dd703fa382edeb11
       - run: black .
 
