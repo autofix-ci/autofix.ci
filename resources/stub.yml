@@ -1,5 +1,5 @@
 name: autofix.ci  # needed to securely identify the workflow
-on: [ pull_request ]
+on: [ push, pull_request ]
 permissions:
   contents: read
 
