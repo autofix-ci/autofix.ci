@@ -1,6 +1,8 @@
 name: autofix.ci
-
-on: [ push, pull_request ]
+on:
+  pull_request:
+  push:
+    branches: [ "main" ]
 permissions:
   contents: read
 
@@ -25,7 +27,7 @@ jobs:
       # Upgrade to the latest Python syntax with https://github.com/asottile/pyupgrade
       - uses: install-pinned/pyupgrade@hash
       - run: |
-         shopt -s globstar
-         pyupgrade --exit-zero-even-if-changed --py310-plus **/*.py
+          shopt -s globstar
+          pyupgrade --exit-zero-even-if-changed --py310-plus **/*.py
 
       - uses: autofix-ci/action@hash
