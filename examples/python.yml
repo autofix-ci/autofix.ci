@@ -16,18 +16,19 @@ jobs:
       - uses: install-pinned/black@hash
       - run: black .
 
-      # Remove unused imports with https://github.com/PyCQA/autoflake
-      - uses: install-pinned/autoflake@hash
-      - run: autoflake --in-place --remove-all-unused-imports -r .
-
       # Sort imports with https://github.com/PyCQA/isort
       - uses: install-pinned/isort@hash
       - run: isort .
 
       # Upgrade to the latest Python syntax with https://github.com/asottile/pyupgrade
       - uses: install-pinned/pyupgrade@hash
-      - run: |
+      - name: Run pyupgrade
+        run: |  
           shopt -s globstar
           pyupgrade --exit-zero-even-if-changed --py310-plus **/*.py
+
+      # Remove unused imports with https://github.com/PyCQA/autoflake
+      - uses: install-pinned/autoflake@hash
+      - run: autoflake --in-place --remove-all-unused-imports -r .
 
       - uses: autofix-ci/action@hash
