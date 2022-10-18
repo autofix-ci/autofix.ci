@@ -14,7 +14,8 @@ jobs:
 
       # Optimize all PNGs with https://pngquant.org/
       - run: sudo apt-get update && sudo apt-get install -y pngquant
-      - run: |
+      - name: Run pngquant
+        run: |
           shopt -s globstar
           pngquant -f --ext .png --skip-if-larger -- **/*.png
 
