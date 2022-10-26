@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: install-pinned/black@81e6dbf82145462d413a6662dd703fa382edeb11
+      - uses: install-pinned/black@b0a32e30c31324de87217902803b75cd9e069944
       - run: black .
 
       - uses: install-pinned/reorder_python_imports@97c3e89c53ae5513cc41716e876e26daff8bbdd6
