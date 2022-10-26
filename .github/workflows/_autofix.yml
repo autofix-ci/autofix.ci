@@ -10,7 +10,7 @@ jobs:
   autofix:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v1
 
       - uses: install-pinned/black@81e6dbf82145462d413a6662dd703fa382edeb11
       - run: black .
