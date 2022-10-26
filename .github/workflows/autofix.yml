@@ -20,4 +20,4 @@ jobs:
           shopt -s globstar
           reorder-python-imports --exit-zero-even-if-changed --py310-plus **/*.py
 
-      - uses: autofix-ci/action@85348864affbd15ee858694a665c38b2f31d802c
+      - uses: autofix-ci/action@8106fde54b877517c9af2c3d68918ddeaa7bed64
