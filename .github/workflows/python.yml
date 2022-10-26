@@ -13,22 +13,22 @@ jobs:
       - uses: actions/checkout@v3
 
       # Format your code with https://github.com/psf/black
-      - uses: install-pinned/black@hash
+      - uses: install-pinned/black@b0a32e30c31324de87217902803b75cd9e069944
       - run: black .
 
       # Sort imports with https://github.com/PyCQA/isort
-      - uses: install-pinned/isort@hash
+      - uses: install-pinned/isort@7f9dc1c14e3cb59a73e8d63f79657270e66b8336
       - run: isort .
 
       # Upgrade to the latest Python syntax with https://github.com/asottile/pyupgrade
-      - uses: install-pinned/pyupgrade@hash
+      - uses: install-pinned/pyupgrade@f3d9c7fbfa36720461b54452c3a6e877c558e422
       - name: Run pyupgrade
         run: |  
           shopt -s globstar
           pyupgrade --exit-zero-even-if-changed --py310-plus **/*.py
 
       # Remove unused imports with https://github.com/PyCQA/autoflake
-      - uses: install-pinned/autoflake@hash
+      - uses: install-pinned/autoflake@ced7b8f8af6f3dbae3e860ca9877167e1e8d2a89
       - run: autoflake --in-place --remove-all-unused-imports -r .
 
-      - uses: autofix-ci/action@hash
+      - uses: autofix-ci/action@8106fde54b877517c9af2c3d68918ddeaa7bed64

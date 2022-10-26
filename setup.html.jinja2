@@ -46,7 +46,7 @@
                             Create <samp>.github/workflows/autofix.yml</samp> with the following content:
                         </h2>
                         <div class="fs-6">
-                            {{ examplebox("resources/stub.yml") }}
+                            {{ examplebox("stub.yml") }}
                             <p>
                                 Limiting the runner's permissions and pinning the autofix action to a specific
                                 release is not required, but makes our workflow more resilient against supply chain
@@ -76,7 +76,7 @@
                     We use the <a href="https://github.com/install-pinned/">@install-pinned</a> actions to keep things
                     simple,
                 </p>
-                {{ examplebox("examples/python.yml") }}
+                {{ examplebox("python.yml") }}
                 <p>
                     Of course, there's way more in the Python ecosystem! You may also want to check out
                     <a href="https://github.com/charliermarsh/ruff">ruff</a>,
@@ -94,7 +94,7 @@
                     Here's a simple workflow that formats your TypeScript or JavaScript code using
                     <a href="https://prettier.io/">Prettier</a>:
                 </p>
-                {{ examplebox("examples/typescript.yml") }}
+                {{ examplebox("typescript.yml") }}
                 <p>
                     Alternatively, you may want to check out
                     <a href="https://standardjs.com/">standardjs</a>!
@@ -104,7 +104,7 @@
                 <p>
                     Here's a simple workflow that <samp>rustfmt</samp>s your repo and applies clippy's suggestions:
                 </p>
-                {{ examplebox("examples/rust.yml") }}
+                {{ examplebox("rust.yml") }}
                 <p>
                     You can of course switch to a different Rust toolchain first,
                     for example if you are using nightly rustfmt.
@@ -117,14 +117,14 @@
                 <p>
                     Here's a simple workflow that <samp>gofmt</samp>s your repo:
                 </p>
-                {{ examplebox("examples/go.yml") }}
+                {{ examplebox("go.yml") }}
 
                 <h2 id="images">Images</h2>
                 <p>
                     With a bit of creativity, <strong>autofix.ci</strong> is not limited to code formatting.
                     For example, the following workflow shrinks all PNG files:
                 </p>
-                {{ examplebox("examples/web.yml") }}
+                {{ examplebox("web.yml") }}
 
                 <h2 id="pre-commit">pre-commit hooks</h2>
                 <p>
@@ -133,7 +133,7 @@
                     offers a strong alternative to autofix.ci. Of course, you can also use pre-commit hooks in your
                     autofix.ci workflow:
                 </p>
-                {{ examplebox("examples/pre-commit.yml") }}
+                {{ examplebox("pre-commit.yml") }}
 
                 <div class="text-center mt-4">
                     <a href="https://github.com/autofix-ci/autofix.ci/blob/main/setup.html.jinja2"

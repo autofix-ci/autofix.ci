@@ -12,12 +12,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: install-pinned/black@81e6dbf82145462d413a6662dd703fa382edeb11
+      - uses: install-pinned/black@b0a32e30c31324de87217902803b75cd9e069944
       - run: black .
 
-      - uses: install-pinned/reorder_python_imports@97c3e89c53ae5513cc41716e876e26daff8bbdd6
+      - uses: install-pinned/reorder_python_imports@836caf51548d221fe2de88ea4cc98289cf59521f
       - run: |
           shopt -s globstar
           reorder-python-imports --exit-zero-even-if-changed --py310-plus **/*.py
 
-      - uses: autofix-ci/action@85348864affbd15ee858694a665c38b2f31d802c
+      - uses: autofix-ci/action@8106fde54b877517c9af2c3d68918ddeaa7bed64
