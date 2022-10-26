@@ -1,11 +1,16 @@
 version: 2
 updates:
   - package-ecosystem: github-actions
-    directory: "/" # Location of package manifests
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      
+  - package-ecosystem: github-actions
+    directory: "/examples"
     schedule:
       interval: "weekly"
       
   - package-ecosystem: pip
-    directory: "/" # Location of package manifests
+    directory: "/"
     schedule:
       interval: "weekly"
