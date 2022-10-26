@@ -6,7 +6,7 @@ updates:
       interval: "weekly"
       
   - package-ecosystem: github-actions
-    directory: "/examples"
+    directory: "/examples/python"
     schedule:
       interval: "weekly"
       
