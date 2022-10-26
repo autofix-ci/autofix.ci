@@ -17,7 +17,7 @@ jobs:
       - run: black .
 
       # Sort imports with https://github.com/PyCQA/isort
-      - uses: install-pinned/isort@1f6e3a22f5a6ebc85cfc915b57fc2a594c0fe16d
+      - uses: install-pinned/isort@7f9dc1c14e3cb59a73e8d63f79657270e66b8336
       - run: isort .
 
       # Upgrade to the latest Python syntax with https://github.com/asottile/pyupgrade
