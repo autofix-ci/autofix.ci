@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - run: cargo clippy --fix
-      - run: cargo fmt
+      - run: pip install pre-commit
+      - run: pre-commit run --all-files
 
-      - uses: autofix-ci/action@hash
+      - uses: autofix-ci/action@8106fde54b877517c9af2c3d68918ddeaa7bed64

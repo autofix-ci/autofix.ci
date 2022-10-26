@@ -11,11 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
 
-      - run: npm ci
-      - run: npx prettier --write .
+      - run: cargo clippy --fix
+      - run: cargo fmt
 
-      - uses: autofix-ci/action@hash
+      - uses: autofix-ci/action@8106fde54b877517c9af2c3d68918ddeaa7bed64
