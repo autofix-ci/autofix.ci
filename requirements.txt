@@ -40,9 +40,9 @@ httpx==0.23.0 \
     --hash=sha256:42974f577483e1e932c3cdc3cd2303e883cbfba17fe228b0f63589764d7b9c4b \
     --hash=sha256:f28eac771ec9eb4866d3fb4ab65abd42d38c424739e80c08d8d20570de60b0ef
     # via httpx-cache
-httpx-cache==0.6.0 \
-    --hash=sha256:2b548d68fa55159e2fdc49ea151f513217c21cb4f0057e79fec8376ce15bfe7a \
-    --hash=sha256:3d136ad207d8004e59a69283aa6fc40e1190dad5edbde5859b37778f6d1ecdbf
+httpx-cache==0.6.1 \
+    --hash=sha256:699f648e781f6d06c9f50fa398f7ae30fe5b7668711975760d277f14c601d124 \
+    --hash=sha256:b468b9f3d8d8063d3a0f401401cfd5237e37721f975c436598e4e62fd1f5685c
     # via -r requirements.in
 idna==3.4 \
     --hash=sha256:814f528e8dead7d329833b91c5faa87d60bf71824cd12a7530b5526063d02cb4 \
