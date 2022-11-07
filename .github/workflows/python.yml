@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v3
 
       # Format your code with https://github.com/psf/black
-      - uses: install-pinned/black@b0a32e30c31324de87217902803b75cd9e069944
+      - uses: install-pinned/black@16d510ea9a004e050507ffc22cb0ab52547abc38
       - run: black .
 
       # Sort imports with https://github.com/PyCQA/isort
