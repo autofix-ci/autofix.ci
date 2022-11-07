@@ -21,7 +21,7 @@ jobs:
       - run: isort .
 
       # Upgrade to the latest Python syntax with https://github.com/asottile/pyupgrade
-      - uses: install-pinned/pyupgrade@f3d9c7fbfa36720461b54452c3a6e877c558e422
+      - uses: install-pinned/pyupgrade@3d9b108acabedc415e8b481ee7d89eb932253b56
       - name: Run pyupgrade
         run: |  
           shopt -s globstar
