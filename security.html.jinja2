@@ -21,10 +21,6 @@
                         to update the current pull request once.
                     </li>
                     <li>
-                        autofix.ci's hosted service is written in a memory-safe language that emphasizes correctness
-                        (Rust).
-                    </li>
-                    <li>
                         autofix.ci minimizes untrusted input and data processing where possible. For example,
                         instead of using <samp>git checkout/apply/push</samp>, we have decided to use
                         GitHub's GraphQL API. This makes it much harder to port autofix.ci to other platforms,
@@ -33,6 +29,10 @@
                             data structure</a>
                         instead of applying git commands on untrusted repositories (see e.g.
                         <a href="https://access.redhat.com/security/cve/cve-2021-21300">CVE-2021-21300</a>).
+                    </li>
+                    <li>
+                        autofix.ci's hosted service is written in a memory-safe language that emphasizes correctness
+                        (Rust).
                     </li>
                     <li>
                         autofix.ci's main author has extensive practical (building security software, organizing and

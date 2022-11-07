@@ -1,6 +1,6 @@
 {% extends "frame.html.jinja2" %}
 {% block head %}
-    <title>autofix.ci</title>
+    <title>autofix.ci: automatically fix pull requests</title>
 {% endblock %}
 {% block body %}
     <style>/* pygments */{{ pygments_css }}</style>
@@ -141,16 +141,16 @@
                 <h3 id="which-platforms-are-supported" class="fs-5">Which platforms are supported?</h3>
                 <ul>
                     <li>
-                        <strong>autofix.ci</strong> currently supports GitHub and GitHub Actions only.
+                        <strong>autofix.ci</strong> supports GitHub Actions only.
                     </li>
                 </ul>
 
                 <h3 id="does-it-work-for-all-commits" class="fs-5">Does it work for all commits?</h3>
                 <ul>
                     <li>
-                        For safety reasons, <strong>autofix.ci</strong> will not push for commits made by bots. This
-                        avoids
-                        infinite loops with bots continuously correcting each other.
+                        For safety reasons, <strong>autofix.ci</strong> will not apply patches if the last commit has
+                        been authored by a bot.
+                        This avoids infinite loops with bots continuously correcting each other.
                     </li>
                 </ul>
 
@@ -172,10 +172,10 @@
                 <h3 id="is-it-secure" class="fs-5">Is it secure?</h3>
                 <ul>
                     <li>
-                        Yes, because we keep the necessary GitHub authentication token away from potentially untrusted
-                        actions. By using autofix.ci, you only provide your autofix.ci workflow with the capability to
-                        update the pull request branch once. Please see <a href="/security">autofix.ci/security</a>
-                        for details.
+                        Yes, because we keep <strong>autofix.ci</strong>'s GitHub authentication token away from potentially untrusted
+                        actions. By using <strong>autofix.ci</strong>, you only provide your auto-fixing workflow with
+                        the capability to update the pull request branch once.
+                        Please see <a href="/security">autofix.ci/security</a> for details.
                     </li>
                 </ul>
 

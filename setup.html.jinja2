@@ -1,6 +1,6 @@
 {% extends "frame.html.jinja2" %}
 {% block head %}
-    <title>autofix.ci: setup</title>
+    <title>Setup autofix.ci</title>
 {% endblock %}
 {% macro examplebox(filename) %}
     <div class="card mb-3">
@@ -73,8 +73,9 @@
                 <h2 id="python">Python</h2>
                 <p>
                     This example demonstrates the use of some of the most popular Python code fixing tools.
-                    We use the <a href="https://github.com/install-pinned/">@install-pinned</a> actions to keep things
-                    simple,
+                    We use the <a href="https://github.com/install-pinned/">@install-pinned</a> actions to securely
+                    install hardcoded versions of all tools, but you can also use an existing
+                    <code>requirements.txt</code> file, for example.
                 </p>
                 {{ examplebox("python.yml") }}
                 <p>
@@ -128,9 +129,9 @@
 
                 <h2 id="pre-commit">pre-commit hooks</h2>
                 <p>
-                    If your workflow is based on pre-commit hooks only,
-                    <a href="https://pre-commit.ci/">pre-commit.ci</a>
-                    offers a strong alternative to autofix.ci. Of course, you can also use pre-commit hooks in your
+                    If your existing workflow is based on pre-commit.com hooks, you should use
+                    <a href="https://pre-commit.ci/">pre-commit.ci</a> instead of autofix.ci.
+                    Of course, you can also integrate pre-commit hooks in your
                     autofix.ci workflow:
                 </p>
                 {{ examplebox("pre-commit.yml") }}
