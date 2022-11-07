@@ -28,7 +28,7 @@ jobs:
           pyupgrade --exit-zero-even-if-changed --py310-plus **/*.py
 
       # Remove unused imports with https://github.com/PyCQA/autoflake
-      - uses: install-pinned/autoflake@ced7b8f8af6f3dbae3e860ca9877167e1e8d2a89
+      - uses: install-pinned/autoflake@3b52d986b39699308b3edea3471032daa14d050c
       - run: autoflake --in-place --remove-all-unused-imports -r .
 
       - uses: autofix-ci/action@8106fde54b877517c9af2c3d68918ddeaa7bed64
