@@ -15,7 +15,7 @@ jobs:
       - uses: install-pinned/black@b0a32e30c31324de87217902803b75cd9e069944
       - run: black .
 
-      - uses: install-pinned/reorder_python_imports@836caf51548d221fe2de88ea4cc98289cf59521f
+      - uses: install-pinned/reorder_python_imports@0505c9cc1805564ca09905637e20d334990501a0
       - run: |
           shopt -s globstar
           reorder-python-imports --exit-zero-even-if-changed --py310-plus **/*.py
