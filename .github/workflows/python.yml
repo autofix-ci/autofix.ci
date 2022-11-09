@@ -1,5 +1,6 @@
 name: autofix.ci
 on:
+  workflow_call:
   pull_request:
   push:
     branches: [ "main" ]
@@ -16,16 +17,19 @@ jobs:
       - uses: install-pinned/black@16d510ea9a004e050507ffc22cb0ab52547abc38
       - run: black .
 
-      # Sort imports with https://github.com/PyCQA/isort
-      - uses: install-pinned/isort@dd294c0c89d436a7a941cdf69908e1fff4d88119
-      - run: isort .
+      # Sort imports with https://github.com/asottile/reorder_python_imports
+      - uses: install-pinned/reorder_python_imports@171e4f0e811d3992876a8c8f620b903673aedcc6
+      - name: Run reorder-python-imports
+        run: |
+         shopt -s globstar
+         reorder-python-imports --exit-zero-even-if-changed --py39-plus **/*.py
 
       # Upgrade to the latest Python syntax with https://github.com/asottile/pyupgrade
       - uses: install-pinned/pyupgrade@3d9b108acabedc415e8b481ee7d89eb932253b56
       - name: Run pyupgrade
         run: |  
           shopt -s globstar
-          pyupgrade --exit-zero-even-if-changed --py310-plus **/*.py
+          pyupgrade --exit-zero-even-if-changed --py39-plus **/*.py
 
       # Remove unused imports with https://github.com/PyCQA/autoflake
       - uses: install-pinned/autoflake@3b52d986b39699308b3edea3471032daa14d050c
