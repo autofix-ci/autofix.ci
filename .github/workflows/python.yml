@@ -35,4 +35,4 @@ jobs:
       - uses: install-pinned/black@eb2a29711ccb90d8d6c77fbbeeb9348b2cdbd892
       - run: black .
 
-      - uses: autofix-ci/action@8106fde54b877517c9af2c3d68918ddeaa7bed64
+      - uses: autofix-ci/action@8bc06253bec489732e5f9c52884c7cace15c0160
