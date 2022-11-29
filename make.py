@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import base64
 import re
 from pathlib import Path
 
@@ -25,8 +26,17 @@ if __name__ == "__main__":
         code = re.sub(r"([0-9a-zA-Z._/-]+)@([0-9a-f]{40})", hash_sub, code)
         return Markup(code)
 
+    def inline_image(filename: str) -> Markup:
+        file = here / filename
+        contents = file.read_bytes()
+        return Markup(
+            f"data:image/{ file.suffix };base64," + base64.b64encode(contents).decode("ascii")
+        )
+
+
     env = Environment(loader=FileSystemLoader([here]))
     env.globals["example"] = example
+    env.globals["inline_image"] = inline_image
 
     for page in ["index", "privacy", "security", "setup"]:
         (here / f"{page}.html").write_bytes(

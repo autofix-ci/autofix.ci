@@ -33,6 +33,20 @@
             background-color: #477917;
             border-color: #477917;
         }
+
+        .used-by {
+            display: inline-block;
+            margin: 0 .5rem;
+            font-weight: 500;
+            color: #212529;
+            text-decoration: none;
+        }
+        .used-by img {
+            border-radius: 6px;
+            box-shadow: 0 0 0 1px rgba(27,31,36,0.15);
+            width: 28px;
+            margin-right: 8px;
+        }
     </style>
     <main class="container text-center">
         <h1 class="my-4 fs-4 fw-normal text-center">
@@ -47,7 +61,7 @@
             Install on GitHub
         </a>
 
-        <h2 class="mt-4">How it Works</h2>
+        <h2 class="mt-4">How It Works</h2>
         <div id="arrow" class="d-none d-lg-block"></div>
         <div class="row justify-content-center align-items-stretch">
             <div class="col-12 col-lg-6 mb-2">
@@ -75,7 +89,7 @@
                     <div class="card-header p-3 p-xl-4" style="justify-content: center">
                         <img alt="a screenshot showing automated commits on GitHub" class="img-fluid"
                              style="max-width: 100%; justify-self: center; max-height: 160px"
-                             src="data:image/png;base64,{% include "resources/github-screenshot.b64.png" %}">
+                             src="{{ inline_image("resources/github-screenshot.png") }}">
                     </div>
                 </div>
             </div>
@@ -100,6 +114,18 @@
             </div>
         </div>
 
+        <h4 class="mt-4 mb-3">Used By</h4>
+        {% set users = [
+            {"name": "mitmproxy", "url": "https://github.com/mitmproxy/mitmproxy/blob/main/.github/workflows/autofix.yml"},
+            {"name": "react-navigation", "url": "https://github.com/react-navigation/react-navigation/blob/main/.github/workflows/autofix.yml"},
+            {"name": "pdoc", "url": "https://github.com/mitmproxy/pdoc/blob/main/.github/workflows/autofix.yml"},
+        ]%}
+        {% for user in users %}
+            <a href="{{ user.url }}" class="used-by">
+                <img alt="logo of {{ user.name }}" src="{{ inline_image("resources/used-by/" + user.name + ".png") }}">{{ user.name }}
+            </a>
+        {% endfor %}
+        and <a class="link-secondary" href="https://github.com/autofix-ci/action/network/dependents">many more.</a>
         {#
         <h2 class="mt-4">Pricing</h2>
         <div class="row justify-content-center">
