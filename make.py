@@ -30,9 +30,9 @@ if __name__ == "__main__":
         file = here / filename
         contents = file.read_bytes()
         return Markup(
-            f"data:image/{ file.suffix };base64," + base64.b64encode(contents).decode("ascii")
+            f"data:image/{ file.suffix };base64,"
+            + base64.b64encode(contents).decode("ascii")
         )
-
 
     env = Environment(loader=FileSystemLoader([here]))
     env.globals["example"] = example
