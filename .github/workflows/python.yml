@@ -21,7 +21,7 @@ jobs:
           pyupgrade --exit-zero-even-if-changed --py39-plus **/*.py
 
       # Sort imports with https://github.com/asottile/reorder_python_imports
-      - uses: install-pinned/reorder_python_imports@0505c9cc1805564ca09905637e20d334990501a0
+      - uses: install-pinned/reorder_python_imports@7365755886d8ef6679e1b77457975a8698842af6
       - name: Run reorder-python-imports
         run: |
          shopt -s globstar
