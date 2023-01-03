@@ -22,7 +22,7 @@ jobs:
             target/
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
 
-      - run: cargo clippy --fix
-      - run: cargo fmt
+      - run: cargo clippy --fix --workspace
+      - run: cargo fmt --all
 
       - uses: autofix-ci/action@8bc06253bec489732e5f9c52884c7cace15c0160
