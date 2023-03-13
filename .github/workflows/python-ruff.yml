@@ -18,7 +18,7 @@ jobs:
       - run: ruff --fix-only .
 
       # Format code with https://github.com/psf/black
-      - uses: install-pinned/black@01bdeb8005b1c929b857e7a447a68fd8b22de195
+      - uses: install-pinned/black@61e9116e9a39f2dd836078fec8fc13f132c884eb
       - run: black .
 
       - uses: autofix-ci/action@8bc06253bec489732e5f9c52884c7cace15c0160
