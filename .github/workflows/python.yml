@@ -29,7 +29,7 @@ jobs:
 
       # Remove unused imports with https://github.com/PyCQA/autoflake
       - uses: install-pinned/autoflake@46b4898323be58db319656fe2758f3fd5ddfee32
-      - run: autoflake --in-place --remove-all-unused-imports -r .
+      - run: autoflake --in-place --remove-all-unused-imports --ignore-init-module-imports -r .
 
       # Format code with https://github.com/psf/black
       - uses: install-pinned/black@01d6e39ad0779428fcdd976f6458e4c342cec66d
