@@ -32,7 +32,7 @@ jobs:
       - run: autoflake --in-place --remove-all-unused-imports -r .
 
       # Format code with https://github.com/psf/black
-      - uses: install-pinned/black@01d6e39ad0779428fcdd976f6458e4c342cec66d
+      - uses: install-pinned/black@91bfc65283b1e8e9abac5d9e2a092c03c2ffddb8
       - run: black .
 
       - uses: autofix-ci/action@8bc06253bec489732e5f9c52884c7cace15c0160
