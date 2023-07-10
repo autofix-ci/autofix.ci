@@ -109,7 +109,7 @@
                     <li>No configuration: Simply call the <strong>autofix.ci</strong> action when you want to update the
                         pull request.
                     </li>
-                    <li>Supports <em>all</em> pull requests (including from forks) and regular branches.</li>
+                    <li>Supports <em>all</em> pull requests (including from forks) and branches without branch protection.</li>
                 </ul>
             </div>
         </div>
@@ -175,7 +175,7 @@
                 <h3 id="does-it-work-for-all-commits" class="fs-5">Does it work for all commits?</h3>
                 <ul>
                     <li>
-                        For safety reasons, <strong>autofix.ci</strong> will not apply patches if the last three commits
+                        For safety reasons, <strong>autofix.ci</strong> will not apply patches if the last four commits
                         have been authored by a bot.
                         This avoids infinite loops with bots continuously correcting each other.
                     </li>
