@@ -19,4 +19,4 @@ jobs:
           shopt -s globstar
           pngquant -f --ext .png --skip-if-larger -- **/*.png
 
-      - uses: autofix-ci/action@8bc06253bec489732e5f9c52884c7cace15c0160
+      - uses: autofix-ci/action@89762f9c25dd85f6b78cd40e521232e403357ec0
