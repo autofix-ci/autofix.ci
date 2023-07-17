@@ -33,7 +33,7 @@ jobs:
 
       - run: pip install -r requirements.txt
       - run: python make.py
-      - uses: actions/upload-pages-artifact@v1
+      - uses: actions/upload-pages-artifact@v2
         with:
           path: '.'
 
