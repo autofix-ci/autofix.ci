@@ -2,6 +2,7 @@ name: website
 
 # build the documentation whenever there are new commits on main
 on:
+  pull_request:
   workflow_dispatch:
   schedule:
     - cron: '20 20 * * 1'
@@ -40,6 +41,7 @@ jobs:
   # Deploy the artifact to GitHub pages.
   # This is a separate job so that only actions/deploy-pages has the necessary permissions.
   deploy:
+    if: github.event_name != 'pull_request'
     needs: build
     runs-on: ubuntu-latest
     permissions:
