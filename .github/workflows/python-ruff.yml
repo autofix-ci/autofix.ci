@@ -11,7 +11,7 @@ jobs:
   autofix:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       # Fix lint errors with https://github.com/charliermarsh/ruff
       - uses: install-pinned/ruff@76d990f7d5d8e6db806a8a6db30492cd519c1e06

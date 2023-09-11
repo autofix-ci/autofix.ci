@@ -4,6 +4,6 @@ jobs:
   autofix:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - run: cargo fmt
       - uses: autofix-ci/action@8caa572fd27b0019a65e4c695447089c8d3138b9
