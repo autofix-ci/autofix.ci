@@ -11,7 +11,7 @@ jobs:
   autofix:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       # Upgrade to the latest Python syntax with https://github.com/asottile/pyupgrade
       - uses: install-pinned/pyupgrade@af7d65f31bddb01097a24da6c8fb694441f51cba
