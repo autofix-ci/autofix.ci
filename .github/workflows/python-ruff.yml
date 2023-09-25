@@ -14,7 +14,7 @@ jobs:
       - uses: actions/checkout@v4
 
       # Fix lint errors with https://github.com/charliermarsh/ruff
-      - uses: install-pinned/ruff@d0afc9e7b6ab99acf3b126f030768e7f26e3857c
+      - uses: install-pinned/ruff@6aa2496b951062c5b1d6af67532bdb16a73f429e
       - run: ruff --fix-only .
 
       # Format code with https://github.com/psf/black
