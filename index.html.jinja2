@@ -116,9 +116,10 @@
 
         <h4 class="mt-4 mb-3">Used By</h4>
         {% set users = [
+            {"name": "Vue.js", "url": "https://github.com/vuejs/core/blob/main/.github/workflows/autofix.yml"},
+            {"name": "Nuxt", "url": "https://github.com/nuxt/modules/blob/main/.github/workflows/autofix.yml"},
+            {"name": "React Navigation", "url": "https://github.com/react-navigation/react-navigation/blob/main/.github/workflows/autofix.yml"},
             {"name": "mitmproxy", "url": "https://github.com/mitmproxy/mitmproxy/blob/main/.github/workflows/autofix.yml"},
-            {"name": "nuxt", "url": "https://github.com/nuxt/modules/blob/main/.github/workflows/autofix.yml"},
-            {"name": "react-navigation", "url": "https://github.com/react-navigation/react-navigation/blob/main/.github/workflows/autofix.yml"},
             {"name": "pdoc", "url": "https://github.com/mitmproxy/pdoc/blob/main/.github/workflows/autofix.yml"},
         ]%}
         {% for user in users %}
