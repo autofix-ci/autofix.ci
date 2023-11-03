@@ -16,9 +16,6 @@ jobs:
       # Fix lint errors with https://github.com/charliermarsh/ruff
       - uses: install-pinned/ruff@486c15a01a34df13a06027021ae58ab2aa95e629
       - run: ruff --fix-only .
-
-      # Format code with https://github.com/psf/black
-      - uses: install-pinned/black@190bf7e4093e01554b535bfd166281f28d54ea92
-      - run: black .
+      - run: ruff format .
 
       - uses: autofix-ci/action@d3e591514b99d0fca6779455ff8338516663f7cc
