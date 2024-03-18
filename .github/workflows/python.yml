@@ -28,11 +28,11 @@ jobs:
          reorder-python-imports --exit-zero-even-if-changed --py39-plus **/*.py
 
       # Remove unused imports with https://github.com/PyCQA/autoflake
-      - uses: install-pinned/autoflake@4ec21525e4de790a8b76d1224a2dd45868a2239d
+      - uses: install-pinned/autoflake@eefdf266065c9cbe80ff5285a8a3307ad97d7958
       - run: autoflake --in-place --remove-all-unused-imports -r .
 
       # Format code with https://github.com/psf/black
-      - uses: install-pinned/black@da1c4cd9047284302028272b9db712597533fac6
+      - uses: install-pinned/black@5c54e216b1101a3e602e4920e23cc0610ab620b4
       - run: black .
 
       - uses: autofix-ci/action@d3e591514b99d0fca6779455ff8338516663f7cc
