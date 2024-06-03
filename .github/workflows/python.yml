@@ -21,7 +21,7 @@ jobs:
           pyupgrade --exit-zero-even-if-changed --py39-plus **/*.py
 
       # Sort imports with https://github.com/asottile/reorder_python_imports
-      - uses: install-pinned/reorder_python_imports@4919b538f4633769fd61b53a217ee8189332f49e
+      - uses: install-pinned/reorder_python_imports@9397de6904c0791c23a16ce081245fc7498cf2b0
       - name: Run reorder-python-imports
         run: |
          shopt -s globstar
@@ -32,7 +32,7 @@ jobs:
       - run: autoflake --in-place --remove-all-unused-imports -r .
 
       # Format code with https://github.com/psf/black
-      - uses: install-pinned/black@09e8d7bc888aceeb0fb35c4281b1cb00447e6758
+      - uses: install-pinned/black@16ae6270b3f857eb3b9dc5d8f84cd2ecb1ca052b
       - run: black .
 
       - uses: autofix-ci/action@d3e591514b99d0fca6779455ff8338516663f7cc
