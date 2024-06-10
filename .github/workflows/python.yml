@@ -14,7 +14,7 @@ jobs:
       - uses: actions/checkout@v4
 
       # Upgrade to the latest Python syntax with https://github.com/asottile/pyupgrade
-      - uses: install-pinned/pyupgrade@2ef0e31dd8755f2a8b9f170ebfb241cb88b4f1ed
+      - uses: install-pinned/pyupgrade@efde3dc7ac7a76ec9f45e3e50d00c0483703fa67
       - name: Run pyupgrade
         run: |  
           shopt -s globstar
@@ -32,7 +32,7 @@ jobs:
       - run: autoflake --in-place --remove-all-unused-imports -r .
 
       # Format code with https://github.com/psf/black
-      - uses: install-pinned/black@16ae6270b3f857eb3b9dc5d8f84cd2ecb1ca052b
+      - uses: install-pinned/black@c37af12ed36ef2ab05e2a923a06e9c5c15479b67
       - run: black .
 
       - uses: autofix-ci/action@d3e591514b99d0fca6779455ff8338516663f7cc
