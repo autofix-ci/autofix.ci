@@ -15,7 +15,7 @@ jobs:
 
       # Fix lint errors with https://github.com/charliermarsh/ruff
       - uses: install-pinned/ruff@2200865065cb780d9258c8c7b0cecb17725a6ff6
-      - run: ruff --fix-only .
+      - run: ruff check --fix-only .
       - run: ruff format .
 
       - uses: autofix-ci/action@dd55f44df8f7cdb7a6bf74c78677eb8acd40cd0a
