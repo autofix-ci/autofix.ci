@@ -1,0 +1,15 @@
+[project]
+name = "autofix-website"
+version = "0.0.0"
+description = "The autofix.ci website"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "jinja2>=3.1.4",
+    "pygments>=2.18.0",
+]
+
+[tool.uv]
+dev-dependencies = [
+    "ruff>=0.6.9",
+]

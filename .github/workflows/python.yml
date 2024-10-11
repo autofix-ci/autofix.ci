@@ -13,26 +13,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Upgrade to the latest Python syntax with https://github.com/asottile/pyupgrade
-      - uses: install-pinned/pyupgrade@25433bd037e5227fd0187b90e306324eceda414d
-      - name: Run pyupgrade
-        run: |  
-          shopt -s globstar
-          pyupgrade --exit-zero-even-if-changed --py39-plus **/*.py
-
-      # Sort imports with https://github.com/asottile/reorder_python_imports
-      - uses: install-pinned/reorder_python_imports@9397de6904c0791c23a16ce081245fc7498cf2b0
-      - name: Run reorder-python-imports
-        run: |
-         shopt -s globstar
-         reorder-python-imports --exit-zero-even-if-changed --py39-plus **/*.py
-
-      # Remove unused imports with https://github.com/PyCQA/autoflake
-      - uses: install-pinned/autoflake@eefdf266065c9cbe80ff5285a8a3307ad97d7958
-      - run: autoflake --in-place --remove-all-unused-imports -r .
-
-      # Format code with https://github.com/psf/black
-      - uses: install-pinned/black@46488bc0a646d12f177132a74acc381a04a02dc9
-      - run: black .
+      # Use uv to ensure we have the same ruff version in CI and locally.
+      - uses: astral-sh/setup-uv@77c28f02b3322332d4a4446b3177f426da8bf086
+        with:
+          version: "0.4.20"
+      # Fix lint errors
+      - run: uv run ruff check --fix-only .
+      # Format code
+      - run: uv run ruff format .
 
       - uses: autofix-ci/action@dd55f44df8f7cdb7a6bf74c78677eb8acd40cd0a

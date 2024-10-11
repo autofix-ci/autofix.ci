@@ -49,8 +49,8 @@
                             {{ examplebox("stub.yml") }}
                             <p>
                                 Limiting the runner's permissions and pinning the autofix action to a specific
-                                release is not required, but makes our workflow more resilient against supply chain
-                                attacks.<sup><a href="https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions">[1]</a></sup>
+                                commit hash instead of a tag is not required, but makes our workflow more resilient
+                                against supply chain attacks.<sup><a href="https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions">[1]</a></sup>
                             </p>
                         </div>
                     </li>
@@ -72,20 +72,21 @@
 
                 <h2 id="python">Python</h2>
                 <p>
-                    These two examples demonstrate the use of some of the most popular Python code fixing tools.
-                    We use the <a href="https://github.com/install-pinned/">@install-pinned</a> actions to
+                    This example demonstrates the use of <a href="https://astral.sh/ruff">ruff</a> with autofix.ci.
+                    We use <a href="https://astral.sh/uv">uv</a> to
                     install deterministic versions of all tools, but you can also <code>pip install</code>
                     or use an existing <code>requirements.txt</code> file.
                 </p>
 
                 <strong>ruff</strong>
-                {{ examplebox("python-ruff.yml") }}
-
-                <strong>pyupgrade, reorder_python_imports autoflake, and black</strong>
                 {{ examplebox("python.yml") }}
 
                 <p>
-                    Of course, there's way more in the Python ecosystem! You may also want to check out
+                    Of course, there are more autofixers than just ruff! You may also want to check out
+                    <a href="https://github.com/psf/black">black</a>,
+                    <a href="https://github.com/asottile/pyupgrade">pyupgrade</a>,
+                    <a href="https://github.com/asottile/reorder-python-imports">reorder_python_imports</a>,
+                    <a href="https://github.com/PyCQA/autoflake">autoflake</a>,
                     <a href="https://github.com/asottile/yesqa">yesqa</a>,
                     <a href="https://github.com/PyCQA/isort">isort</a>,
                     <a href="https://github.com/asottile/blacken-docs">blacken-docs</a>,
