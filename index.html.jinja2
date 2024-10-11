@@ -116,17 +116,25 @@
 
         <h4 class="mt-4 mb-3">Used By</h4>
         {% set users = [
-            {"name": "Bun", "url": "https://github.com/oven-sh/bun/blob/main/.github/workflows/format.yml"},
-            {"name": "Vue.js", "url": "https://github.com/vuejs/core/blob/main/.github/workflows/autofix.yml"},
-            {"name": "Nuxt", "url": "https://github.com/nuxt/modules/blob/main/.github/workflows/autofix.yml"},
-            {"name": "UnJS", "url": "https://github.com/search?q=org%3Aunjs+autofix.ci&type=code"},
-            {"name": "React Navigation", "url": "https://github.com/react-navigation/react-navigation/blob/main/.github/workflows/autofix.yml"},
-            {"name": "mitmproxy", "url": "https://github.com/mitmproxy/mitmproxy/blob/main/.github/workflows/autofix.yml"},
-            {"name": "pdoc", "url": "https://github.com/mitmproxy/pdoc/blob/main/.github/workflows/autofix.yml"},
+            {"login": "mermaid-js", "display": "Mermaid"},
+            {"login": "Nuxt"},
+            {"login": "vuejs", "display": "Vue.js"},
+            {"login": "TanStack"},
+            {"login": "mitmproxy"},
+            {"login": "tRPC"},
+            {"login": "slidevjs", "display": "Slidev"},
+            {"login": "langflow-ai", "display": "Langflow AI"},
+            {"login": "react-navigation", "display": "React Navigation"},
+            {"login": "TabbyML"},
+            {"login": "UnoCSS"},
+            {"login": "oxc-project", "display": "oxc"},
+            {"login": "oven-sh", "display": "Bun"},
+            {"login": "UnJS"},
+            {"login": "pdoc"},
         ]%}
         {% for user in users %}
-            <a href="{{ user.url }}" class="used-by">
-                <img alt="logo of {{ user.name }}" src="{{ inline_image("resources/used-by/" + user.name + ".png") }}">{{ user.name }}
+            <a href="https://github.com/{{ user.login }}" class="used-by">
+                <img alt="logo of {{ user.display or user.login }}" src="{{ inline_image("resources/used-by/" + (user.login | lower) + ".png") }}">{{ user.display or user.login }}
             </a>
         {% endfor %}
         and <a class="link-secondary" href="https://github.com/autofix-ci/action/network/dependents">many more.</a>
