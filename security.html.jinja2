@@ -1,6 +1,6 @@
 {% extends "frame.html.jinja2" %}
 {% block head %}
-    <title>autofix.ci: privacy policy</title>
+    <title>autofix.ci: security</title>
 {% endblock %}
 {% block body %}
     <main class="container">
@@ -40,6 +40,48 @@
                         from a security group).
                     </li>
                 </ol>
+
+                <h5 id="workflow-name">Why does the workflow name have to be "autofix.ci"?</h5>
+                <p>
+                    Consider a repository with two workflows: <samp>autofix.ci</samp> and <samp>compromised_workflow</samp>.
+                    We have an attacker that can execute code in <samp>compromised_workflow</samp>. However, this workflow
+                    is locked down to <code>permissions: {contents: read}</code>.
+                </p>
+                <p>
+                    If arbitrary workflow names were allowed, the attacker could upload an "autofix.ci" artifact from
+                    the compromised workflow, and then manually call the autofix API. This privilege escalation path is mitigated
+                    by requiring that the artifact is upload from a specific workflow.
+                </p>
+
+                <p>The server-side check is repeated in
+                    the action's code to provide immediate feedback.
+                </p>
+
+                <h5 id="permissions">What does the GitHub App request permissions for?</h5>
+
+                <dl>
+                    <dt><code>contents:write</code></dt>
+                    <dd>This permission is necessary to push the fix commit.</dd>
+                    </dl>
+
+                    <dt><code>actions:write</code></dt>
+                    <dd>This permission is used to cancel all other workflows associated with a commit when fixing it
+                        (configurable via the <samp>fail-fast</samp> option in
+                        <a href="https://github.com/autofix-ci/action/blob/main/action.yml">action.yml</a>).</dd>
+
+                    <dt><code>pull-requests:write</code></dt>
+                    <dd>This permissions is used to add comments to pull requests.
+                        autofix.ci uses comments to inform external contributors that their PR needs
+                        fixing if they did not enable the "allow edits by maintainers" option.</dd>
+
+                    <dt><code>checks:write</code></dt>
+                    <dd>This permission is used to add commit statuses.
+                        When autofix.ci fails to fix a branch (for example due to branch protection rules),
+                        it creates a commit status with an explanation.</dd>
+
+                    <dt><code>metadata:read</code></dt>
+                    <dd>This permissions is mandatory for all GitHub Apps.</dd>
+                </dl>
 
                 <h2 class="mt-4">Reporting a Vulnerability</h2>
                 <p>
