@@ -42,6 +42,7 @@ if __name__ == "__main__":
         (here / f"{page}.html").write_bytes(
             env.get_template(f"{page}.html.jinja2")
             .render(
+                page=page,
                 pygments_css=pygments_css,
             )
             .encode()

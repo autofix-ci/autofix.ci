@@ -21,6 +21,7 @@
     <meta property="og:image" content="https://autofix.ci/logo/logo.png">
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" href="/logo/logo.svg" type="image/svg+xml"/>
+    <link rel="canonical" href="https://autofix.ci/{{ page | replace("index", "") }}" />
     {%- autoescape false %}{% filter replace("\n","") | replace("    ","") | replace("<s","\n    <s") -%}
         <script type="application/ld+json">
             {
