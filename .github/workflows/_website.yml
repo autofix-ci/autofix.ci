@@ -27,9 +27,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: mhils/workflows/checkout@v11
-      - uses: mhils/workflows/setup-python@v11
-      - uses: mhils/workflows/setup-uv@v11
+      - uses: mhils/workflows/checkout@v12
+      - uses: mhils/workflows/setup-python@v12
+      - uses: mhils/workflows/setup-uv@v12
       - run: uv run make.py
 
       - uses: actions/upload-pages-artifact@v3
