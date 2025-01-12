@@ -50,10 +50,10 @@
                 <p>
                     If arbitrary workflow names were allowed, the attacker could upload an "autofix.ci" artifact from
                     the compromised workflow, and then manually call the autofix API. This privilege escalation path is mitigated
-                    by requiring that the artifact is upload from a specific workflow.
+                    by requiring that the artifact is uploaded from a specific workflow.
                 </p>
 
-                <p>The server-side check is repeated in
+                <p>This check happens on the server, but it is also repeated in
                     the action's code to provide immediate feedback.
                 </p>
 
