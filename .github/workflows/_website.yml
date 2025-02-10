@@ -27,9 +27,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: mhils/workflows/checkout@v16
-      - uses: mhils/workflows/setup-python@v16
-      - uses: mhils/workflows/setup-uv@v16
+      - uses: mhils/workflows/checkout@v17
+      - uses: mhils/workflows/setup-python@v17
+      - uses: mhils/workflows/setup-uv@v17
       - run: uv run make.py
       - run: rm -rf .venv
       
